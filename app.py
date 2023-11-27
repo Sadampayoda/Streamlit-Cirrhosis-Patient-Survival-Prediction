@@ -4,7 +4,7 @@ import streamlit as st
 import subprocess
 
 subprocess.run(["pip", "install",'-r', "requirements.txt"])
-# from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier
 # import joblib
 import pickle
 
@@ -91,6 +91,7 @@ st.write('Tahap atau tingkat keparahan sirosis hati pada saat pengamatan awal (1
 
 if st.button("Submit"):
     import pandas as pd
+
     from sklearn.preprocessing import MinMaxScaler
     from sklearn.model_selection import train_test_split, cross_val_score
     import joblib
