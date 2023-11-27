@@ -4,6 +4,9 @@ import streamlit as st
 import subprocess
 
 subprocess.run(["pip", "install", "scikit-learn"])
+from sklearn.ensemble import RandomForestClassifier
+import joblib
+import pickle
 
 # import streamlit as st
 
@@ -84,9 +87,7 @@ Stage = st.selectbox('stadium histologis penyakit (1, 2, 3, atau 4) : ',[
 
 st.write('Tahap atau tingkat keparahan sirosis hati pada saat pengamatan awal (1, 2, 3, atau 4) semakin mendekati 4 maka semakin parah')
 
-from sklearn.ensemble import RandomForestClassifier
-import joblib
-import pickle
+
 
 if st.button("Submit"):
     import pandas as pd
