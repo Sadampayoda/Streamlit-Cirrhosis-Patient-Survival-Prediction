@@ -90,49 +90,49 @@ st.write('Tahap atau tingkat keparahan sirosis hati pada saat pengamatan awal (1
 
 
 if st.button("Submit"):
-    # import pandas as pd
-    # from sklearn.preprocessing import MinMaxScaler
-    # from sklearn.model_selection import train_test_split, cross_val_score
-    # import joblib
-    # import numpy as np
+    import pandas as pd
+    from sklearn.preprocessing import MinMaxScaler
+    from sklearn.model_selection import train_test_split, cross_val_score
+    import joblib
+    import numpy as np
 
-    # url = "cirrhosis.csv"
-    # df = pd.read_csv(url)
-    # df.interpolate(method='linear', inplace=True)
-    # df['Drug'	].fillna(df['Drug'].mode()[0], inplace=True)
-    # df['Ascites'	].fillna(df['Ascites'].mode()[0], inplace=True)
-    # df['Hepatomegaly'	].fillna(df['Hepatomegaly'].mode()[0], inplace=True)
-    # df['Spiders'	].fillna(df['Stage'].mode()[0], inplace=True)
-    # df['Stage'	].fillna(df['Stage'].mode()[0], inplace=True)
-    # df['Age'] = df['Age'] // 1000
-    # x = df.drop(['Status','ID'], axis=1)
-    # y = df["Status"]
-    # x['Drug'] = x['Drug'].astype('category').cat.codes
-    # x['Ascites'] = x['Ascites'].astype('category').cat.codes
-    # x['Hepatomegaly'] = x['Hepatomegaly'].astype('category').cat.codes
-    # x['Spiders'] = x['Spiders'].astype('category').cat.codes
-    # x['Stage'] = x['Stage'].astype('category').cat.codes
-    # x['Sex'] = x['Sex'].astype('category').cat.codes
-    # x['Edema'] = x['Edema'].astype('category').cat.codes
+    url = "cirrhosis.csv"
+    df = pd.read_csv(url)
+    df.interpolate(method='linear', inplace=True)
+    df['Drug'	].fillna(df['Drug'].mode()[0], inplace=True)
+    df['Ascites'	].fillna(df['Ascites'].mode()[0], inplace=True)
+    df['Hepatomegaly'	].fillna(df['Hepatomegaly'].mode()[0], inplace=True)
+    df['Spiders'	].fillna(df['Stage'].mode()[0], inplace=True)
+    df['Stage'	].fillna(df['Stage'].mode()[0], inplace=True)
+    df['Age'] = df['Age'] // 1000
+    x = df.drop(['Status','ID'], axis=1)
+    y = df["Status"]
+    x['Drug'] = x['Drug'].astype('category').cat.codes
+    x['Ascites'] = x['Ascites'].astype('category').cat.codes
+    x['Hepatomegaly'] = x['Hepatomegaly'].astype('category').cat.codes
+    x['Spiders'] = x['Spiders'].astype('category').cat.codes
+    x['Stage'] = x['Stage'].astype('category').cat.codes
+    x['Sex'] = x['Sex'].astype('category').cat.codes
+    x['Edema'] = x['Edema'].astype('category').cat.codes
 
-    # x = df.drop(['N_Days','ID','Status','Drug','Sex','Spiders','Cholesterol','Tryglicerides','Platelets'], axis=1)
-    # x['Ascites'] = x['Ascites'].astype('category').cat.codes
-    # x['Hepatomegaly'] = x['Hepatomegaly'].astype('category').cat.codes
-    # x['Edema'] = x['Edema'].astype('category').cat.codes
-    # X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
-    # scaler = MinMaxScaler()
-    # X_train_scaler = scaler.fit_transform(X_train)
-    # X_test_scaler = scaler.transform(X_test)
-    # x = pd.DataFrame(X_train,columns=x.columns)
-    # # Buat model Random Forest
-    # random_forest_model = RandomForestClassifier(n_estimators=100)
-    # # Latih model
-    # random_forest_model.fit(X_train, y_train)
+    x = df.drop(['N_Days','ID','Status','Drug','Sex','Spiders','Cholesterol','Tryglicerides','Platelets'], axis=1)
+    x['Ascites'] = x['Ascites'].astype('category').cat.codes
+    x['Hepatomegaly'] = x['Hepatomegaly'].astype('category').cat.codes
+    x['Edema'] = x['Edema'].astype('category').cat.codes
+    X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+    scaler = MinMaxScaler()
+    X_train_scaler = scaler.fit_transform(X_train)
+    X_test_scaler = scaler.transform(X_test)
+    x = pd.DataFrame(X_train,columns=x.columns)
+    # Buat model Random Forest
+    random_forest_model = RandomForestClassifier(n_estimators=100)
+    # Latih model
+    random_forest_model.fit(X_train, y_train)
     # Prediksi dengan model
 
-    with open('saved.pkl', 'rb') as file:
-        loaded_model = pickle.load(file)
-    random_forest_predictions = loaded_model.predict([[20,0,1,0,1.8,3.64,186.0,2115.0,136.00,10.0,3.0]])
+    # with open('saved.pkl', 'rb') as file:
+    #     loaded_model = pickle.load(file)
+    random_forest_predictions = random_forest_model.predict([[20,0,1,0,1.8,3.64,186.0,2115.0,136.00,10.0,3.0]])
     st.write("Hasil Prediksi:", random_forest_predictions)
 
 
