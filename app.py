@@ -1,20 +1,13 @@
 import streamlit as st
 
+
 import subprocess
-# Instal matplotlib jika belum terinstal
-try:
-    import matplotlib.pyplot as plt
-except ImportError:
-    st.warning("Instalasi sklearn...")
-    st.script_runner.install_pypi_package("sklearn")
-    # import matplotlib.pyplot as plt
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    st.success("sklearn telah diinstal.")
+
+subprocess.run(["pip", "install", "scikit-learn"])
+
 # import streamlit as st
 
-
-
+import pandas as pd
 
 # Instal matplotlib
 
