@@ -3,7 +3,7 @@ import streamlit as st
 
 import subprocess
 
-subprocess.run(["pip", "install", "scikit-learn"])
+subprocess.run(["pip", "install",'-r', "requirements.txt"])
 from sklearn.ensemble import RandomForestClassifier
 import joblib
 import pickle
