@@ -1,9 +1,20 @@
-subprocess.run(["pip", "install", "matplotlib"])
 import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
 
 import subprocess
+# Instal matplotlib jika belum terinstal
+try:
+    import matplotlib.pyplot as plt
+except ImportError:
+    st.warning("Instalasi matplotlib...")
+    st.script_runner.install_pypi_package("matplotlib")
+    # import matplotlib.pyplot as plt
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    st.success("matplotlib telah diinstal.")
+# import streamlit as st
+
+
+
 
 # Instal matplotlib
 
