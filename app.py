@@ -128,7 +128,7 @@ if st.button("Submit"):
 
     # with open('saved.pkl', 'rb') as file:
     #     loaded_model = pickle.load(file)
-    random_forest_predictions = random_forest_model.predict([[20,0,1,0,1.8,3.64,186.0,2115.0,136.00,10.0,3.0]])
+    random_forest_predictions = random_forest_model.predict([[Age,Ascites,Hepatomegaly,Edema,Bilirubin,Albumin,Copper,Alk_phos,Sgot,Stage]])
     st.write("Hasil Prediksi:", random_forest_predictions)
 
 
