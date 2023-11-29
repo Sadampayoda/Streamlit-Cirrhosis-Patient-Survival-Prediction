@@ -131,11 +131,17 @@ if st.button("Submit"):
     #     loaded_model = pickle.load(file)
     random_forest_predictions = random_forest_model.predict([[Age,Ascites,Hepatomegaly,Edema,Bilirubin,Albumin,Copper,Alk_phos,Sgot,Prothrombin,Stage]])
 
-
+    
     # load = joblib.load('saved_data.joblib');
     # prediction = load.predict([[Age,Ascites,Hepatomegaly,Edema,Bilirubin,Albumin,Copper,Alk_phos,Sgot,Prothrombin,Stage]])
-    
-    st.write("Hasil Prediksi:", random_forest_predictions)
+    if(random_forest_predictions[0] == 'C'):
+        result = ' C (Censored): Artinya anda tidak mengalami peristiwa akhir atau mati  selama periode pengamatan. Data anda tersebut "censored" karena tidak ada informasi akhir yang tersedia.'
+    elif(random_forest_predictions[0] == 'CL'):
+        result = ' CL (Censored due to liver tx) Artinya anda tidak mengalami peristiwa akhir karena censored dan peristiwa censored tersebut terjadi karena anda menjalani transplantasi hati.'
+    else :
+        result = ' D (Death): Artinya pasien mengalami kematian sebagai peristiwa akhir selama periode pengamatan'
+        
+    st.write("Hasil Prediksi:", result)
 
 
     
